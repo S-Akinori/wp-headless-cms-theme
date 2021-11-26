@@ -1,0 +1,1 @@
+<p>WordpressをヘッドレスCMS化する専用のテーマです。フロントはNext.jsやGatsby.js等で制作してください。</p>
