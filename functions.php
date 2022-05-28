@@ -5,6 +5,11 @@
 add_theme_support( 'post-thumbnails' );
 
 /**
+ * activate menus
+ */
+register_nav_menu( 'side-nav', 'サイドナビゲーション');
+
+/**
  * deploy to vercel when a post is created or updated
  *
  * @return JSON
@@ -29,10 +34,10 @@ add_action('save_post', 'deploy_to_vercel');
  *  return wordpress refresh token from GraphQL IDE
  * 
 */
-add_filter( 'graphql_jwt_auth_secret_key', function() {
-  $refresh_token = ''; // set refresh token
-  return $refresh_token;
-});
+// add_filter( 'graphql_jwt_auth_secret_key', function() {
+//   $refresh_token = ''; // set refresh token
+//   return $refresh_token;
+// });
 
 /**
  * redirect to custom preview link
@@ -40,7 +45,7 @@ add_filter( 'graphql_jwt_auth_secret_key', function() {
 function preview_link($link) {
 	global $post;
 	$secret = ''; // set preview secret
-	$new_link = 'http://localhost:3000/api/preview?secret='.$secret.'&id='.$post->ID;
+	$new_link = 'http://localhost:3000/blog/preview?secret='.$secret.'&id='.$post->ID;
    return $new_link;
 }
 add_filter('preview_post_link', 'preview_link');
